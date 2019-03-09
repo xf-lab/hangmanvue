@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XF DESIGN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- fontawesome v5.6.3 -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+
+<!-- CSS LINKS -->
+<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<style>
+	.rojo{
+		color: red;
+		font-weight: bold;
+	}
+	#palabra,#palabra-oculta{
+		font-size: 2.0rem;
+	}
+	.contenido-juego{
+		text-align: center;
+		padding: 20px;
+	}
+	#intentos,#letras-acertadas{
+		color: green;
+		font-size: 2.0rem;
+	}
+	#mensaje{
+		color: #eabd15;
+		font-size: 2.5rem;
+	}
+	#letras-falladas{
+		color: red;
+		font-size: 2rem;
+	}
+	#inputLetter{
+		width: 70px;
+    	margin-right: 20px;
+	}
+</style>
+<body>
+<header>
+	<div class="container">
+		<div class="nav row rounded-top align-items-stretch justify-content-between">
+			<div class="logo col-md-12 col-lg d-flex align-items-center justify-content-center justify-content-lg-start ">
+				<h2>XF DESIGN</h2><span class="barra">&nbsp; | &nbsp;</span><p>Web Development</p>
+			</div>
+			<nav class="menu col-md-12 col-lg-auto d-flex align-items-stretch flex-wrap flex-sm-nowrap">
+				<a href="/" class="link-a d-flex align-items-center">
+					<div class="d-flex flex-column text-center">
+						<i class="fas fa-home"></i>
+						<span>&nbsp;Home&nbsp;</span>
+					</div>
+				</a>
+				<a href="/javascript.html" class="link-c d-flex align-items-center">
+					<div class="d-flex flex-column text-center">
+						<i class="fab fa-js-square"></i>
+						<span>JS Work</span>
+					</div>
+				</a>
+				<a href="/jquery.html" class="link-c d-flex align-items-center">
+					<div class="d-flex flex-column text-center">
+						<img src="img/jquery.png" alt="" width="15" class="ml-auto mr-auto">
+						<span>jQuery Work</span>
+					</div>
+				</a>
+				<a href="/vue.html" class="link-c d-flex align-items-center">
+					<div class="d-flex flex-column text-center">
+						<i class="fab fa-vuejs"></i>
+						<span>Vue Work</span>
+					</div>
+				</a>
+			</nav>
+		</div>	
+	</div>
+</header>
+
+<main>
+	<div class="container mt-4 mb-4">
+		<div class="row portfolio">
+			<div class="col">
+				<h1 class="titulo">HANGMAN GAME IN VUE</h1>
+				<h6 class="text-center"><i>Guess the word in less than 10 attempts</i></h6>
+				<div id="hangman" class="contenido-juego">
+					<p id="contenedor-intentos">
+						Press a key. You have <span id="intentos">{{attempts}}</span> attempts.
+					</p>
+					<div class="mb-4">
+						<input type="text" id="inputLetter" maxlength="1"><button class="btn btn-primary btn-sm" @click="tryLetter">Try letter</button>
+					</div>
+					<p id="mensaje" class=""></p>
+					<p id="num-letras"></p>
+					<p id="palabra"></p>
+					<p id="palabra-oculta">
+						<span v-for="length in wordLength" :id="length"> _ </span>
+					</p>
+					<!-- <span id="num"></span> -->
+					<p>
+						CORRECT LETTERS: <span id="letras-acertadas"></span>
+					</p>
+					<p>
+						FAIL LETTERS: <span id="letras-falladas"></span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<!-- FOOTER -->
+<footer class="d-flex justify-content-center">
+	<div class="redes-sociales justify-content-center">
+		<div class="col-auto">
+			<a href="#"><i class="fab fa-stack-overflow fa-3x stack-overflow" aria-hidden="true"></i></a>
+			<a href="#"><i class="fab fa-github fa-3x github" aria-hidden="true"></i></a>
+			<a href="#"><i class="fab fa-linkedin fa-3x linkedin" aria-hidden="true"></i></a>
+		</div>
+		<div class="col-12 mt-3 w-100 d-flex justify-content-center">
+			<span class="footer-brand">XF DESIGN 2019</span>
+		</div>
+	</div>
+</footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+window.addEventListener("load", function(event) {
+
+    new Vue({
+	  el: "#hangman",
+	  data: {
+	  		words: ["glass", "bottle", "lamp", "chair", "table", "cat", "dog", "hamster", "kitchen", "house", "street", "bridge", "neck", "elbow", "door", "horse", "bear", "eagle", "boat", "fountain", "bycicle", "shore", "tree", "chest", "cigarette", "helmet", "river", "elephant", "tiger", "blue", "orange", "purple", "chemical", "music", "chess", "cheese", "spoon", "professor", "police", "baker", "ocean", "sailor", "paper", "writer", "actor", "floor", "string", "water", "rabbit", "movie", "guitar", "song", "tower", "country", "driver", "university", "airport", "school", "mountain", "beach"],
+	  		wordLength: 0,
+	  		hiddenWord: "",
+	  		attempts: 10
+	  },
+	  methods: {
+	  	tryLetter: function (){
+	  		var char = $('#inputLetter').val();
+	  		console.log(char);
+	  		this.charMatch(char);
+	  	},
+	  	charMatch: function (char) {
+	      	var palabraOculta = this.hiddenWord;
+	      	var hayAcierto = false;
+	      	if (char) {
+	        	//bucle para recorrer la palabra y compararla con la letra pulsada
+	        	for(let i=0; i < palabraOculta.length ;i++){
+	        		if(palabraOculta.charAt(i)==char){
+	        			hayAcierto = true;
+						document.getElementById(i+1).innerHTML = palabraOculta.charAt(i);
+	        			let k = i+1;
+	        			$("span[id="+k+"]").html( char );
+	        		}
+	        	}
+	        	//if para diferenciar cuando se acierta y cuando se falla
+	        	if(hayAcierto){
+	        		$('#inputLetter').val("");
+	        		var acertadas = document.getElementById("letras-acertadas").innerHTML;
+	        		//este if hace que no se muestren letras acertadas repetidas
+	        		if(acertadas.includes(char)==false){
+	        			$("#letras-acertadas").append(" "+char+" ");
+	        			this.wordComplete();
+	        		}
+	        	}else{
+	        		$('#inputLetter').val("");
+	        		var falladas = document.getElementById("letras-falladas").innerHTML;
+	        		//este if hace que no se muestren letras falladas repetidas
+	        		if(falladas.includes(char)==false){
+	        			this.attempts--;//se resta un intento
+	        			$("#letras-falladas").append(" "+char+" ");
+	        			this.wordComplete();
+	        		}
+	        	}
+        	}
+	    },
+	    wordComplete: function(){
+	    	var htmlWord='';
+	    	for(let i=0; i < this.hiddenWord.length ;i++){
+	    		let k = i + 1;
+	        	htmlWord += $("span[id="+k+"]").text();
+	        }
+	        if(this.hiddenWord==htmlWord){
+	    		$("#mensaje").html("<span class='alert alert-success'>You win :)</span>");
+	    		$("#contenedor-intentos").remove();
+	    		$("#inputLetter").attr("disabled", true);
+	    		$("button").attr("disabled", true);
+	    	}else if(this.attempts<=0){//si intento llega a 0 entra en este if y el jugador ha perdido
+	    		$("#inputLetter").attr("disabled", true);
+	    		$("button").attr("disabled", true);
+	    		for(let i=0; i < this.hiddenWord.length ;i++){
+	    			let id = i + 1;
+	    			let caracter = $("span[id="+id+"]").text();
+	    			let espacioVacio = " _ ";
+	    			if(espacioVacio == caracter ){
+	    				$("span[id="+id+"]").html(this.hiddenWord.charAt(i)).addClass("rojo");
+	    			}
+	    		}
+	    		$("#mensaje").html( `<span class='d-block alert alert-danger'>You lost :( <br>The word was: <strong>${this.hiddenWord}</strong></span>` );
+	    	}
+	    }
+	  },
+	  mounted: function() {
+	  	var char;
+	  	var n = Math.floor(Math.random()*(59-0+1)+0); //número aleatorio entre 0 y 49
+	  	this.wordLength=this.words[n].length;
+	  	this.hiddenWord=this.words[n];
+	  	console.log(this.hiddenWord);
+	  }
+	});
+});
+</script>
+</html>
