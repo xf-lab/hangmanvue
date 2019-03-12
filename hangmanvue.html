@@ -142,8 +142,12 @@ window.addEventListener("load", function(event) {
 	  methods: {
 	  	tryLetter: function (){
 	  		var char = $('#inputLetter').val();
-	  		console.log(char);
-	  		this.charMatch(char);
+	  		if(char.match(/^[a-zA-Z]+$/)){
+	  			console.log(char);
+	  			this.charMatch(char);
+	  		}else{
+	  			alert("Only letters");
+	  		}	
 	  	},
 	  	charMatch: function (char) {
 	      	var palabraOculta = this.hiddenWord;
@@ -206,7 +210,7 @@ window.addEventListener("load", function(event) {
 	    }
 	  },
 	  mounted: function() {
-	  	var char;
+	  	//var char;
 	  	var n = Math.floor(Math.random()*(59-0+1)+0); //número aleatorio entre 0 y 49
 	  	this.wordLength=this.words[n].length;
 	  	this.hiddenWord=this.words[n];
